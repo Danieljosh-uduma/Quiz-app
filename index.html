@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" value="'josh">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon_io/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon_io/favicon-32x32.png">
+    <link rel="manifest" href="/assets/favicon_io/site.webmanifest">
+    <script type="module" src="/assets/js/app.js" defer></script>
+    <title>Quiz App</title>
+</head>
+<body>
+    
+    <main>
+        <section id="homepage" class="main">
+            <logo>
+                <h2>Quiz<span>app</span></h2>
+            </logo>
+    
+            <form action="" id="form">
+                <label for="name">
+                    <span>Enter your name</span>
+                    <input type="text" name="name" id="name" placeholder="John Doe" maxlength="17" required>
+                </label>
+    
+                <button type="submit">Start</button>
+            </form>
+        </section>
+    
+        <section id="quiz" class="main hidden">
+            <nav>
+                <a href="/index.html">
+                    Restart
+                </a>
+            </nav>
+            <section id="question">
+                <div id="progress-bar">
+                    <svg class="progress-bar" viewBox="0 0 100 100" width="100" height="100">
+                        <circle class="bg" cx="50" cy="50" r="45" />
+                        <circle id="fg" cx="50" cy="50" r="45" stroke-linecap="round"/>
+                    </svg>
+                    <p><span id="question-number">1</span>/10</p>
+                </div>
+                <div id="question-container">
+                    <p id="quiz-question"></p>
+                </div>
+            </section>
+        
+            <section id="options">
+                <ul>
+                    <li class="option"></li>
+                    <li class="option"></li>
+                    <li class="option"></li>
+                    <li class="option"></li>
+                </ul>
+    
+                <button type="button" id="next-btn">Next</button>
+            
+            </section>
+        
+            
+        </section>
+    </main>
+
+</body>
+</html>

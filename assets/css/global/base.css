@@ -1,0 +1,28 @@
+:root {
+    --primary-color: rgba(5, 161, 154, 0.7);
+    --secondary-color: rgba(0, 70, 67, 1);
+    --accent-color: rgba(248, 198, 96, 1);
+    --correct: rgb(35, 229, 174);
+    --wrong: rgba(255, 124, 124, 0.99);
+    --gray: rgba(239, 240, 243, 1);
+    --white: rgba(255, 255, 255, 1);
+}
+
+*,*::after,*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+@font-face {
+    font-family: baloo2;
+    src: url('/assets/fonts/static/Baloo2-Regular.ttf');
+}
+
+main {
+    font-family: baloo2, sans-serif;
+    height: 100dvh;
+    transition: all 0.2s ease-in;
+}
