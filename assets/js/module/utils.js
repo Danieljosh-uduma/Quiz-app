@@ -11,6 +11,7 @@ class User {
 
 let allQuestionsList = []
 
+// fecth questions 
 async function getQuestion() {
     const url = 'https://opentdb.com/api.php?amount=10&category=18&type=multiple';
 
@@ -33,6 +34,7 @@ async function getAllQuestions() {
     allQuestionsList = questions
 }
 
+// shuffle options 
 function shuffleList(array) {
     let currentIndex = array.length, randomIndex;
     while (currentIndex != 0) {

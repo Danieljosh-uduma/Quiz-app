@@ -3,9 +3,10 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.0/firebas
 import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-database.js"
 
 
-const fisrtPlayer = document.getElementById('first')
-const secondPlayer = document.getElementById('second')
-const thirdPlayer = document.getElementById('third')
+const firstPlayer = document.getElementById('first');
+const secondPlayer = document.getElementById('second');
+const thirdPlayer = document.getElementById('third');
+const playerList = document.getElementById('list');
 
 
 const firebaseConfig = {
@@ -22,12 +23,38 @@ export function saveScore(user) {
     push(referenceInDB, user)
 }
 
-onValue(referenceInDB,async function (snapshot) {
-     const snapshotValues = await snapshot.val()
+function render(value, elem, position) {
+    elem.innerHTML = `<p id="${position}">${value.username}<span>${value.score}/10</span></p>`
+}
+
+
+onValue(referenceInDB, async function (snapshot) {
+    const snapshotValues = await snapshot.val()
     const userList = Object.values(snapshotValues)
-    // console.log(userList)
+
+    // sort the list 
     const leaderboard = userList.sort((a, b) => b.score - a.score)
-    console.log(leaderboard)
-    console.log(leaderboard[0].username)
-    // fisrtPlayer.textContent = leaderboard[0]
+
+    // render top 3 players
+    render(leaderboard[0], firstPlayer, 'first')
+    render(leaderboard[1], secondPlayer, 'second')
+    render(leaderboard[2], thirdPlayer, 'third')
+
+    // render rest players
+    for (let user in leaderboard) {
+        if (user > 2) {
+            let player = leaderboard[user];
+            playerList.innerHTML += `
+                <li>
+                    <figure>
+                        <span>${Number(user) + 1}</span>
+                        <img src="/assets/images/profile4.jpg" alt="" class="img">
+                        <figcaption>${player.username}</figcaption>
+                    </figure>
+                    <span>${player.score}/10</span>
+                </li>
+            `
+        }
+    }
+    
 })
