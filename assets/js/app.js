@@ -29,7 +29,7 @@ function displayQuestion(quiz) {
     questionNum.innerHTML = qn;
 
     offset -= 30;
-    progressBAr.style.strokeDashoffset = offset;
+    progressBAr.style.strokeDashoffset = String(offset);
 
     let allOptions = [];
     quiz.incorrect_answers.forEach(element => {
@@ -57,9 +57,11 @@ function seclectOptions(correct_answer) {
             for (let option of options){
                 option.addEventListener('click', () => {
                     if (option.innerHTML == decodeEntities(correct_answer) && trial > 0){
-                        option.classList.add('correct')
-                        user.scoreIncrement()
+                        option.classList.add('correct');
+                        user.scoreIncrement();
                         trial--;
+                        btn.disabled = false;
+                        btn.classList.remove('disabled');
                     }
                     else if (option.innerHTML != decodeEntities(correct_answer) & trial > 0) {
                         option.classList.add('wrong');
@@ -71,6 +73,8 @@ function seclectOptions(correct_answer) {
                             }
                         }
                         trial--;
+                        btn.disabled = false;
+                        btn.classList.remove('disabled');
                     }
                 })
             }
@@ -113,6 +117,8 @@ form.addEventListener('submit', async (event) => {
             for (let option of options) {
                 option.classList.remove('correct') || option.classList.remove('wrong')
             }
+            btn.disabled = true;
+            btn.classList.add('disabled')
 
             displayQuestion(quiz)
             let correct_answer = quiz.correct_answer

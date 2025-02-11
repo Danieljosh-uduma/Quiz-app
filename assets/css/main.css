@@ -77,6 +77,7 @@
             height: 54px;
             border-radius: 12px;
             font-size: 1.5rem;
+            transition: all 0.4s ease;
         }
     }
 }
@@ -422,4 +423,8 @@ img {
     font-size: 1.25rem;
     color: var(--white);
     transition: all 0.2s ease;
+}
+
+.disabled {
+    background-color: var(--primary-color) !important; 
 }
