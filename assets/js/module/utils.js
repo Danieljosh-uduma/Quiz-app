@@ -1,19 +1,20 @@
 class User {
-    constructor (username) {
+    constructor(username) {
         this.username = username;
         this.score = 0;
     }
 
-    scoreIncrement () {
+    scoreIncrement() {
         this.score++;
     }
 }
 
-let allQuestionsList = []
+let allQuestionsList = [];
 
-// fecth questions 
+// fecth questions
 async function getQuestion() {
-    const url = 'https://opentdb.com/api.php?amount=10&category=18&type=multiple';
+    const url =
+        "https://opentdb.com/api.php?amount=10&category=18&type=multiple";
 
     try {
         const response = await fetch(url);
@@ -22,27 +23,29 @@ async function getQuestion() {
         }
         const json = await response.json();
         return json.results;
-    }
-    catch (error) {
+    } catch (error) {
         console.error(error.message);
     }
 }
 
-
 async function getAllQuestions() {
     const questions = await getQuestion();
-    allQuestionsList = questions
+    allQuestionsList = questions;
 }
 
-// shuffle options 
+// shuffle options
 function shuffleList(array) {
-    let currentIndex = array.length, randomIndex;
+    let currentIndex = array.length,
+        randomIndex;
     while (currentIndex != 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex--;
-        [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+        [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex],
+            array[currentIndex]
+        ];
     }
     return array;
 }
 
-export {User, allQuestionsList, getAllQuestions, shuffleList}
+export { User, allQuestionsList, getAllQuestions, shuffleList };
