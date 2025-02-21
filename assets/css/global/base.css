@@ -21,6 +21,11 @@
     src: url('/assets/fonts/static/Baloo2-Regular.ttf');
 }
 
+body {
+    min-width: 400px;
+    min-height: 600px;
+}
+
 main {
     font-family: baloo2, sans-serif;
     height: 100dvh;
