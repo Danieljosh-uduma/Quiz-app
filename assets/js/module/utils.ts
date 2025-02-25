@@ -32,7 +32,9 @@ let allQuestionsList: Question[] = [];
 // fecth questions
 async function getQuestion() {
     const url =
-        "https://opentdb.com/api.php?amount=10&category=18&type=multiple";
+        // "https://opentdb.com/api.php?amount=10&category=18&type=multiple";
+        // "https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple"
+        "https://opentdb.com/api.php?amount=10&category=21&type=multiple"
 
     try {
         const response = await fetch(url);

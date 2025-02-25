@@ -1,10 +1,5 @@
 import { saveScore } from "./module/firebase-db.js";
-import {
-    User,
-    allQuestionsList,
-    getAllQuestions,
-    shuffleList
-} from "./module/utils.js";
+import { User, allQuestionsList, getAllQuestions, shuffleList } from "./module/utils.js";
 // for debugging
 const log = (value) => console.log(value);
 // constanst variables
@@ -18,10 +13,7 @@ const btn = document.getElementById("next-btn");
 const questionNum = document.getElementById("question-number");
 const progressBAr = document.getElementById("fg");
 const msg = document.getElementById("msg");
-let count = 0,
-    qn,
-    offset = 300,
-    user;
+let count = 0, qn, offset = 300, user;
 // display the question
 function displayQuestion(quiz) {
     if (!question || !questionNum || !progressBAr) {
@@ -56,10 +48,8 @@ function seclectOptions(correct_answer) {
     if (trial) {
         for (let option of options) {
             option.addEventListener("click", () => {
-                if (
-                    option.innerHTML == decodeEntities(correct_answer) &&
-                    trial > 0
-                ) {
+                if (option.innerHTML == decodeEntities(correct_answer) &&
+                    trial > 0) {
                     option.classList.add("correct");
                     user.scoreIncrement();
                     trial--;
@@ -69,10 +59,9 @@ function seclectOptions(correct_answer) {
                     }
                     btn.disabled = false;
                     btn.classList.remove("disabled");
-                } else if (
-                    option.innerHTML != decodeEntities(correct_answer) &&
-                    trial > 0
-                ) {
+                }
+                else if (option.innerHTML != decodeEntities(correct_answer) &&
+                    trial > 0) {
                     option.classList.add("wrong");
                     if (option.innerHTML == correct_answer && trial > 0) {
                         option.classList.add("correct");
@@ -100,7 +89,7 @@ if (form) {
         event.preventDefault();
         if (!msg || !userName || !homePage || !quizPage || !btn) {
             log("element not found");
-            location.href = "./index.html";
+            location.href = './index.html';
             return;
         }
         msg.innerHTML = "loading...";
@@ -120,12 +109,14 @@ if (form) {
             if (count == 9) {
                 saveScore(user);
                 location.href = "/leaderboard.html";
-            } else if (count <= 9) {
+            }
+            else if (count <= 9) {
                 count++;
                 quiz = allQuestionsList[count];
                 if (!options) {
                     return;
-                } else {
+                }
+                else {
                     for (let option of options) {
                         option.classList.remove("correct");
                         option.classList.remove("wrong");

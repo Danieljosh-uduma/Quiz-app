@@ -21,7 +21,8 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
-const referenceInDB = ref(database, "LeaderBoard");
+const referenceInDB = ref(database, "LeaderBoard_MultipleQuestions");
+// const referenceInDB = ref(database, "LeaderBoard");
 
 export function saveScore(user: UserProps) {
     push(referenceInDB, user);
